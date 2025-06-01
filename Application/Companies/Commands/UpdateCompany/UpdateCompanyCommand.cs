@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Companies.Queries
+namespace Application.Companies.Commands.UpdateCompany
 {
-    public class GetAllCompaniesQuery
+    internal class UpdateCompanyCommand
     {
-
     }
 }

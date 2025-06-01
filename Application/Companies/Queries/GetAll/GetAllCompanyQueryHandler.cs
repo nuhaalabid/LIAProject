@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Companies.Commands
+namespace Application.Companies.Queries.GetAll
 {
-    public class CreateCompanyCommandHandlar 
+    internal class GetAllCompanyQueryHandler
     {
-       
-
     }
 }
