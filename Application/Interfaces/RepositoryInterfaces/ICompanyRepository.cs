@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces.RepositoryInterfaces
 {
-    public interface ICompanyRepository
+    public interface ICompanyRepository 
     {
             Task<List<Company>> GetAllAsync();
             Task<Company?> GetByIdAsync(int id);
