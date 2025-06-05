@@ -18,12 +18,6 @@ namespace PresentationAPI.Controllers
             _logger = logger;
         }
 
-        //public async Task<IActionResult> GetAll()
-        //{
-        //    var companies = await _mediator.Send(new GetAllCompaniesQuery());
-        //    _logger.LogInformation(" Fetched {Count} companies", companies.Count);
-        //    return Ok(companies);
-        //}
 
 
 
@@ -43,7 +37,6 @@ namespace PresentationAPI.Controllers
         //}
 
 
-
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateCompanyCommand command)
         {
@@ -54,18 +47,6 @@ namespace PresentationAPI.Controllers
 
 
 
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> Update(int id, [FromBody] UpdateCompanyCommand command)
-        //{
-        //    if (id != command.Id)
-        //    {
-        //        _logger.LogWarning("ID mismatch: route ID {RouteId} ≠ command ID {CommandId}", id, command.Id);
-        //        return BadRequest("ID mismatch.");
-        //    }
-        //    await _mediator.Send(command);
-        //    _logger.LogInformation("Company updated: {Id}", id);
-        //    return NoContent();
-        //}
 
 
 
