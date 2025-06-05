@@ -22,6 +22,7 @@ namespace PresentationAPI.Controllers
             _logger = logger;
         }
 
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -29,7 +30,6 @@ namespace PresentationAPI.Controllers
             _logger.LogInformation(" Fetched {Count} companies", companies.Count);
             return Ok(companies);
         }
-
 
 
         [HttpGet("{id}")]
@@ -48,7 +48,6 @@ namespace PresentationAPI.Controllers
         }
 
 
-
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateCompanyCommand command)
         {
@@ -56,6 +55,7 @@ namespace PresentationAPI.Controllers
             _logger.LogInformation("Company created with ID: {Id}", id);
             return Ok(new { Id = id });
         }
+
 
 
 
@@ -84,6 +84,7 @@ namespace PresentationAPI.Controllers
         //    _logger.LogInformation("Company updated: {Id}", id);
         //    return NoContent();
         //}
+
 
 
         [HttpDelete("{id}")]
