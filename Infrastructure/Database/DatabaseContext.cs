@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Database
 {
-    public class database :DbContext
+    public class DatabaseContext :DbContext
     {
-        public database (DbContextOptions<database> options) : base(options) { }
+        public DatabaseContext (DbContextOptions<DatabaseContext> options) : base(options) { }
 
         public DbSet<Company> Companies { get; set; }
 

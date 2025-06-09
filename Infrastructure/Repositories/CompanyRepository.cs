@@ -12,9 +12,9 @@ namespace Infrastructure.Repositories
 {
     public class CompanyRepository : ICompanyRepository
     {
-        private readonly database  _context;
+        private readonly DatabaseContext  _context;
 
-        public CompanyRepository(database context)
+        public CompanyRepository(DatabaseContext context)
         {
             _context = context;
         }
