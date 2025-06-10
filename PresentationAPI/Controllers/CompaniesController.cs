@@ -85,22 +85,41 @@ namespace PresentationAPI.Controllers
                 return BadRequest("ID mismatch.");
             }
 
-            await _mediator.Send(command);
-            _logger.LogInformation("Company updated: {Id}", id);
+            try
+            {
+                await _mediator.Send(command);
 
-            return NoContent(); // 204 - OK, men inget innehåll
+                _logger.LogInformation("Company updated: ID {Id}", id);
+
+                // Valfritt: Hämta det uppdaterade företaget igen om du vill visa det i svaret
+                var updatedCompany = await _mediator.Send(new GetCompanyByIdQuery(id));
+
+                return Ok(updatedCompany); // 200 OK + det uppdaterade företaget i svaret
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating company with ID: {Id}", id);
+                return StatusCode(500, "An error occurred while updating the company.");
+            }
         }
 
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _mediator.Send(new DeleteCompanyCommand(id));
+            try
+            {
+                await _mediator.Send(new DeleteCompanyCommand(id));
 
-            _logger.LogInformation("Company deleted with ID: {Id}", id);
-            return NoContent(); // HTTP 204
+                _logger.LogInformation("Company deleted successfully with ID: {Id}", id);
+                return Ok(new { Message = $"Company with ID {id} deleted successfully." });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error deleting company with ID: {Id}", id);
+                return NotFound(new { Error = $"Company with ID {id} not found." });
+            }
         }
-
     }
 
 
