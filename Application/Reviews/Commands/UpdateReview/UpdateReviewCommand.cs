@@ -1,23 +1,20 @@
-﻿using System;
+﻿using Application.Dtos;
+using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Models
+namespace Application.Reviews.Commands.UpdateReview
 {
-    public class Review
+    public class UpdateReviewCommand : IRequest<ReviewDto>
     {
             public int Id { get; set; }
             public string Title { get; set; } = "";
             public string Comment { get; set; } = "";
             public int Rating { get; set; }
+        }
 
-           // Foreign key och navigation property till Company
-           public int CompanyId { get; set; }
-           public Company? Company { get; set; }
-  
     }
-}
-
 
