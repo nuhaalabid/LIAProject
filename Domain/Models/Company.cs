@@ -11,5 +11,8 @@ namespace Domain.Models
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
+
+        // Navigation property till relaterade recensioner
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 }

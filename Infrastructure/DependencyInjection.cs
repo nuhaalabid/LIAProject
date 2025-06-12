@@ -21,6 +21,7 @@ namespace Infrastructure
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<ICompanyRepository, CompanyRepository>();
+            services.AddScoped<IReviewRepository, ReviewRepository>();
 
 
             return services;

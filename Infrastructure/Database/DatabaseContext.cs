@@ -13,6 +13,6 @@ namespace Infrastructure.Database
         public DatabaseContext (DbContextOptions<DatabaseContext> options) : base(options) { }
 
         public DbSet<Company> Companies { get; set; }
-
+        public DbSet<Review> Reviews { get; set; }
     }
 }
