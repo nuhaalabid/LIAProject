@@ -22,6 +22,7 @@ namespace Infrastructure
 
             services.AddScoped<ICompanyRepository, CompanyRepository>();
             services.AddScoped<IReviewRepository, ReviewRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
 
             return services;
