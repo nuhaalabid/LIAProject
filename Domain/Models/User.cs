@@ -9,9 +9,23 @@ namespace Domain.Models
     public class User
     {
         public int Id { get; set; }
-        public string Email { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;  
+        public string Name { get; set; } = string.Empty;
         public string PasswordHash { get; set; } = string.Empty;
-        public string Role { get; set; } = "Student"; // eller "Admin"
+        public string Role { get; set; } = "Student"; // "Student" eller "Admin"
 
+        public User() { }
+
+        public User(int id, string email, string? name, string passwordHash, string role)
+        {
+            Id = id;
+            Email = email;
+            Name = name ?? string.Empty;
+            PasswordHash = passwordHash;
+            Role = role;
+        }
     }
 }
+
+    
+
