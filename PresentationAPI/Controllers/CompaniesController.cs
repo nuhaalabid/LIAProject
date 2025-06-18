@@ -65,9 +65,9 @@ namespace PresentationAPI.Controllers
 
             try
             {
-                var id = await _mediator.Send(command);
-                _logger.LogInformation("Company created with ID: {Id}", id);
-                return Ok(new { Id = id });
+                var companyDto = await _mediator.Send(command);
+                _logger.LogInformation("Company created with ID: {Id}", companyDto.Id);
+                return Ok(companyDto); 
             }
             catch (Exception ex)
             {
@@ -75,6 +75,7 @@ namespace PresentationAPI.Controllers
                 return StatusCode(500, "Internt serverfel.");
             }
         }
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateCompanyCommand command)
@@ -91,7 +92,7 @@ namespace PresentationAPI.Controllers
 
                 _logger.LogInformation("Company updated: ID {Id}", id);
 
-                // Valfritt: Hämta det uppdaterade företaget igen om du vill visa det i svaret
+               
                 var updatedCompany = await _mediator.Send(new GetCompanyByIdQuery(id));
 
                 return Ok(updatedCompany); // 200 OK + det uppdaterade företaget i svaret
