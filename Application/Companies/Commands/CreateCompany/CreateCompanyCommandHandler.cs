@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.RepositoryInterfaces;
+﻿using Application.Dtos;
+using Application.Interfaces.RepositoryInterfaces;
 using Domain.Models;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.Companies.Commands.CreateCompany
 {
-    public class CreateCompanyCommandHandler : IRequestHandler<CreateCompanyCommand, int>
+    public class CreateCompanyCommandHandler : IRequestHandler<CreateCompanyCommand, CompanyDto>
     {
         private readonly ICompanyRepository _repository;
         private readonly ILogger<CreateCompanyCommandHandler> _logger;
@@ -20,10 +21,10 @@ namespace Application.Companies.Commands.CreateCompany
             ILogger<CreateCompanyCommandHandler> logger)
         {
             _repository = repository;
-            _logger = logger; 
+            _logger = logger;
         }
 
-        public async Task<int> Handle(CreateCompanyCommand request, CancellationToken cancellationToken)
+        public async Task<CompanyDto> Handle(CreateCompanyCommand request, CancellationToken cancellationToken)
         {
             try
             {
@@ -37,12 +38,17 @@ namespace Application.Companies.Commands.CreateCompany
 
                 _logger.LogInformation("Company created: {Name} (ID: {Id})", company.Name, company.Id);
 
-                return company.Id;
+                return new CompanyDto
+                {
+                    Id = company.Id,
+                    Name = company.Name,
+                    Description = company.Description
+                };
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed to create company: {Name}", request.Name);
-                throw; 
+                _logger.LogError(ex, "Failed to create company: {Name}", request.Name);
+                throw;
             }
         }
     }

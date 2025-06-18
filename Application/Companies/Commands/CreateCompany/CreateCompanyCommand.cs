@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Application.Dtos;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Companies.Commands.CreateCompany
 {
-    public class CreateCompanyCommand : IRequest<int>
+    public class CreateCompanyCommand : IRequest<CompanyDto>
     {
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
