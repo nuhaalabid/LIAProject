@@ -85,8 +85,8 @@ namespace PresentationAPI.Controllers
                 return Unauthorized("Invalid email or password.");
             }
 
-            _logger.LogInformation("User logged in: {Email}", result.Email);
-            return Ok(result);
+            _logger.LogInformation("User logged in: {Email}", result.User.Email);
+            return Ok(result); // AuthResultDto (user + token)
         }
 
     }

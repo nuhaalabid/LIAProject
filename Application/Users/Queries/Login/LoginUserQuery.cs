@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Users.Queries.Login
 {
-    public class LoginUserQuery :IRequest<UserDto>
+    public class LoginUserQuery :IRequest<AuthResultDto>
     {
         public string Email { get; set; } = "";
         public string Password { get; set; } = "";
