@@ -4,6 +4,7 @@ using Application.Companies.Commands.UpdateCompany;
 using Application.Companies.Queries.GetAll;
 using Application.Companies.Queries.GetById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +23,7 @@ namespace PresentationAPI.Controllers
             _logger = logger;
         }
 
-
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
